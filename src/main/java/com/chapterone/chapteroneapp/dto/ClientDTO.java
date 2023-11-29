@@ -1,16 +1,23 @@
 package com.chapterone.chapteroneapp.dto;
 
 import com.chapterone.chapteroneapp.models.Client;
+import com.chapterone.chapteroneapp.models.ClientBook;
+import com.chapterone.chapteroneapp.services.ClientBookService;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.Set;
 import java.util.stream.Collectors;
 
 public class ClientDTO {
+
     private Long id;
     private String firstName;
     private String lastName;
     private String email;
 
     private Set<OrderTotalDTO> orderTotal;
+    private Set<ClientBookDTO> clientBook;
+
 
     public ClientDTO() {
     }
@@ -21,6 +28,8 @@ public class ClientDTO {
         this.lastName = client.getLastName();
         this.email = client.getEmail();
         this.orderTotal = client.getOrderTotal().stream().map(OrderTotalDTO::new).collect(Collectors.toSet());
+        this.clientBook = client.getWishList().stream().map(ClientBookDTO::new).collect(Collectors.toSet());
+
     }
 
     public Long getId() {
@@ -41,5 +50,9 @@ public class ClientDTO {
 
     public Set<OrderTotalDTO> getOrderTotal() {
         return orderTotal;
+    }
+
+    public Set<ClientBookDTO> getClientBook() {
+        return clientBook;
     }
 }

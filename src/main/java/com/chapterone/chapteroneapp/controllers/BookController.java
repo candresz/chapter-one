@@ -5,9 +5,11 @@ import com.chapterone.chapteroneapp.dto.ClientDTO;
 import com.chapterone.chapteroneapp.models.Book;
 import com.chapterone.chapteroneapp.models.Client;
 import com.chapterone.chapteroneapp.services.BookService;
+import com.chapterone.chapteroneapp.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,6 +20,8 @@ public class BookController {
 
     @Autowired
     private BookService bookService;
+    @Autowired
+    private ClientService clientService;
 
     @GetMapping
     public List<BookDTO> getAllBooks() {
@@ -60,5 +64,7 @@ public class BookController {
 
         return new ResponseEntity<>("Book created successfully", HttpStatus.CREATED);
     }
+
+
 
 }

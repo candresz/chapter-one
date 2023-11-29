@@ -16,6 +16,9 @@ public class Book {
 
     @OneToMany(mappedBy = "book", fetch = FetchType.EAGER)
     private Set<OrderDetail> orderDetails = new HashSet<>();
+
+    @OneToMany(mappedBy = "book")
+    private Set<ClientBook> clientBooks = new HashSet<>();
     private String name;
     private String author;
     private String categories;
@@ -121,5 +124,17 @@ public class Book {
 
     public void setTotalSales(int totalSales) {
         this.totalSales = totalSales;
+    }
+
+    public Set<ClientBook> getClientBooks() {
+        return clientBooks;
+    }
+
+    public void setClientBooks(Set<ClientBook> clientBooks) {
+        this.clientBooks = clientBooks;
+    }
+    public void addClientBook(ClientBook clientBook){
+        clientBook.setBook(this);
+        this.clientBooks.add(clientBook);
     }
 }
