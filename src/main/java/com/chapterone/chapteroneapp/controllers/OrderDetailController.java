@@ -23,9 +23,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -47,7 +45,7 @@ public class OrderDetailController {
     @Value("${stripe.api.key}")
     private String apiKey;
 
-    @PostMapping("/charge")
+
     public ChargeResponseDTO chargeCard(@RequestBody ChargeRequest chargeRequest) throws StripeException {
         Stripe.apiKey = apiKey;
         long amountInCents = Math.round(chargeRequest.getAmount() * 100);
@@ -60,7 +58,6 @@ public class OrderDetailController {
 
         Charge charge = Charge.create(chargeParams);
 
-        // Crear y devolver un DTO con la información relevante
         return new ChargeResponseDTO(charge.getId(), amountInCents, charge.getStatus());
     }
     @PostMapping
@@ -122,6 +119,5 @@ public class OrderDetailController {
             return new ResponseEntity<>("Payment processing error: " + e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
-
 
 }

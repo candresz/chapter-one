@@ -17,9 +17,10 @@ public class Client {
     private String firstName;
     private String lastName;
     private String email;
-
     private String password;
     private Boolean isAdmin;
+    @OneToMany(mappedBy = "client")
+    private Set<ClientBook> wishList = new HashSet<>();
     @OneToMany(mappedBy = "client", fetch = FetchType.EAGER)
     private Set<OrderTotal> orderTotals = new HashSet<>();
 
@@ -87,8 +88,25 @@ public class Client {
         isAdmin = admin;
     }
 
+
+    public Set<OrderTotal> getOrderTotals() {
+        return orderTotals;
+    }
+
     public void addClientOrder(OrderTotal orderTotal) {
         orderTotal.setClient(this);
         this.orderTotals.add(orderTotal);
+    }
+
+    public Set<ClientBook> getWishList() {
+        return wishList;
+    }
+
+    public void setWishList(Set<ClientBook> wishList) {
+        this.wishList = wishList;
+    }
+    public void addClientBook(ClientBook clientBook){
+        clientBook.setClient(this);
+        this.wishList.add(clientBook);
     }
 }

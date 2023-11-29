@@ -29,7 +29,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.postgresql:postgresql'
 //    runtimeOnly 'com.h2database:h2'
-    implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml'
+//    implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml'
     implementation 'com.stripe:stripe-java:24.5.0'
 }
 
