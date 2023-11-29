@@ -23,6 +23,10 @@ public class ClientBookServiceImplement implements ClientBookService {
         return clientBookRepository.findByClient(client);
     }
 
+    @Override
+    public void deleteByClientIdAndBookId(Long clientId, Long bookId) {
+        clientBookRepository.deleteByClientIdAndBookId(clientId, bookId);
+    }
 
 
 }

@@ -46,4 +46,13 @@ public class ClientBookController {
         return new ResponseEntity<>("Book added to list", HttpStatus.OK);
 
     }
+    @PostMapping("/delete")
+    public ResponseEntity<String> deleteClientBook(@RequestParam Long id, Authentication authentication){
+        Client client = clientService.findClientByEmail(authentication.getName());
+
+        clientBookService.deleteByClientIdAndBookId(client.getId(), id);
+        return new ResponseEntity<>("Book deleted from list", HttpStatus.OK);
+
+    }
+
 }
