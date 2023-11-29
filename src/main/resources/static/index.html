@@ -2,9 +2,54 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Stripe Payment Example</title>
 </head>
 <body>
+    <div id="app">
+        <form id="payment-form" @submit.prevent="submitPayment">
+            <!-- Campo para la dirección -->
+            <div>
+                <label for="address">Address:</label>
+                <input type="text" id="address" v-model="order.address" placeholder="Enter address" />
+            </div>
+        
+            <!-- Campos para los detalles del libro -->
+            <div v-for="(book, index) in order.books" :key="index">
+                <div>
+                    <label for="book-id">Book ID:</label>
+                    <input type="number" v-model="book.id" placeholder="Book ID" />
+                </div>
+                <div>
+                    <label for="quantity">Quantity:</label>
+                    <input type="number" v-model="book.quantity" placeholder="Quantity" />
+                </div>
+                <div>
+                    <label for="price">Price:</label>
+                    <input type="number" v-model="book.price" placeholder="Price" />
+                </div>
+            </div>
+        
+            <!-- Botón para agregar más libros -->
+            <button type="button" @click="addBook">Add another book</button>
+        
+            <!-- Detalles de pago de Stripe -->
+            <div id="card-number"></div>
+            <div id="card-exp"></div>
+            <div id="card-cvc"></div>
+        
+            <!-- Botón de envío -->
+            <button type="submit">Pay</button>
+        </form>
+        
+        
+    </div>
 
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    
+    <script src="stripe.js"></script> <!-- Tu archivo JavaScript externo -->
 </body>
 </html>
