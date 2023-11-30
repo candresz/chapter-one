@@ -64,7 +64,16 @@ public class BookController {
 
         return new ResponseEntity<>("Book created successfully", HttpStatus.CREATED);
     }
-
-
+    @PostMapping("/addStock")
+    public ResponseEntity<String> updateStock(@RequestParam Long id, int newStock){
+        if(!bookService.existsById(id)){
+            return  new ResponseEntity<>("Book does not exists", HttpStatus.FORBIDDEN);
+        }
+        if(newStock <= 0){
+            return  new ResponseEntity<>("Quantity must be greater than zero", HttpStatus.FORBIDDEN);
+        }
+        bookService.updateStock(id, newStock);
+        return  new ResponseEntity<>("Stock updated", HttpStatus.OK);
+    }
 
 }

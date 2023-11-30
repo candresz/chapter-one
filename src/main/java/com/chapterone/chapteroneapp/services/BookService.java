@@ -18,6 +18,7 @@ public interface BookService {
     boolean existsByStockGreaterThanEqual(int amount);
     void updateBookStock(Long bookId, int quantity);
     void updateTotalSales(Long bookId, int quantity);
+    int updateStock(Long bookId, int newStock);
 
 
 

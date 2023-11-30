@@ -16,5 +16,9 @@ public interface BookRepository extends JpaRepository<Book, Long> {
     boolean existsById(Long id);
 
     boolean existsByStockGreaterThanEqual(int amount);
+    @Modifying
+    @Transactional
+    @Query("UPDATE Book b SET b.stock = b.stock + :newStock WHERE b.id = :bookId")
+    int updateStock(Long bookId, int newStock);
 
 }
