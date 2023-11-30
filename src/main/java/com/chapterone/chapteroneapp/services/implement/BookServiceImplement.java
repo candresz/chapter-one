@@ -62,6 +62,10 @@ public class BookServiceImplement implements BookService {
        book.setTotalSales(book.getTotalSales() + quantity);
     }
 
+    @Override
+    public int updateStock(Long bookId, int newStock) {
+        return bookRepository.updateStock(bookId, newStock);
+    }
 
 
 }
