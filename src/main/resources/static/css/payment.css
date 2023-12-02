@@ -1,0 +1,68 @@
+/* Estilo general del formulario */
+#payment-form {
+    background-color: #15161d; /* Fondo blanco para el formulario */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    margin: 40px auto;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+/* Estilo de los inputs */
+#payment-form input[type="text"],
+#payment-form input[type="number"] {
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+#payment-form input[type="text"]:focus,
+#payment-form input[type="number"]:focus {
+    border-color: #D10024; /* Color de complemento para el foco */
+    outline: none;
+}
+
+/* Estilo de los botones */
+#payment-form button {
+    width: 100%;
+    background-color: #D10024; /* Color de complemento para botones */
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+
+#payment-form button:hover {
+    background-color: #B3001E; /* Un tono más oscuro para el hover */
+}
+
+/* Estilo para los elementos de Stripe */
+#card-number, #card-exp, #card-cvc {
+    padding: 15px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f7f7f7;
+}
+
+
+/* Ajustes para mejorar la legibilidad en fondos oscuros */
+label,h2 {
+    color: white;
+}
+h2{
+    margin-top: 2rem;
+    
+}
