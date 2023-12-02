@@ -44,6 +44,7 @@
 </head>
 
 <body>
+	<div id="app">
 	<!-- HEADER -->
 	<header>
 		<!-- TOP HEADER -->
@@ -103,71 +104,61 @@
 							</div>
 							<!-- /Wishlist -->
 
-							<!-- Cart -->
-							<div class="dropdown">
-								<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-									<i class="fa fa-shopping-cart"></i>
-									<span>Your Cart</span>
-									<div class="qty">3</div>
+							  <!-- Cart -->
+							  <div class="dropdown">
+								<a
+								  class="dropdown-toggle"
+								  data-toggle="dropdown"
+								  aria-expanded="true"
+								>
+								  <i class="fa fa-shopping-cart"></i>
+								  <span>Your Cart</span>
+								  <div class="qty">{{cart.length}}</div>
 								</a>
 								<div class="cart-dropdown">
-									<div class="cart-list">
-										<div class="product-widget">
-											<div class="product-img">
-												<img src="../img/portada%20libro.jpg" alt="">
-											</div>
-											<div class="product-body">
-												<h3 class="product-name"><a href="#">product name goes here</a></h3>
-												<h4 class="product-price"><span class="qty">1x</span>$980.00</h4>
-											</div>
-											<button class="delete"><i class="fa fa-close"></i></button>
-										</div>
-										<div class="product-widget">
-											<div class="product-img">
-												<img src="../img/portada%20libro.jpg" alt="">
-											</div>
-											<div class="product-body">
-												<h3 class="product-name"><a href="#">product name goes here</a></h3>
-												<h4 class="product-price"><span class="qty">1x</span>$980.00</h4>
-											</div>
-											<button class="delete"><i class="fa fa-close"></i></button>
-										</div>
-										<div class="product-widget">
-											<div class="product-img">
-												<img src="../img/portada%20libro.jpg" alt="">
-											</div>
-											<div class="product-body">
-												<h3 class="product-name"><a href="#">product name goes here</a></h3>
-												<h4 class="product-price"><span class="qty">1x</span>$980.00</h4>
-											</div>
-											<button class="delete"><i class="fa fa-close"></i></button>
-										</div>
-
-										<div class="product-widget">
-											<div class="product-img">
-												<img src="../img/portada%20libro.jpg" alt="">
-											</div>
-											<div class="product-body">
-												<h3 class="product-name"><a href="#">product name goes here</a></h3>
-												<h4 class="product-price"><span class="qty">3x</span>$980.00</h4>
-											</div>
-											<button class="delete"><i class="fa fa-close"></i></button>
-										</div>
+								  <div v-for="book of cart" class="cart-list">
+									<div class="product-widget">
+									  <div class="product-img">
+										<img :src="book.imageUrl" alt="" />
+									  </div>
+									  <div class="product-body">
+										<h3 class="product-name">
+										  <a href="#">{{book.name}}</a>
+										</h3>
+										<h4 class="product-price">
+										  <span class="qty">x{{book.quantity}}</span
+										  >${{book.price}}
+										</h4>
+									  </div>
+									  <button @click="deletefromcart(book)" class="delete">
+										<i class="fa fa-close"></i>
+									  </button>
 									</div>
-									<div class="cart-summary">
-										<small>3 Item(s) selected</small>
-										<h5>SUBTOTAL: $2940.00</h5>
-									</div>
-									<div class="cart-btns">
-										<a href="cart.html">View Cart</a>
-										<a href="checkout.html">Checkout <i
-												class="fa fa-arrow-circle-right"></i></a>
-									</div>
-
+			
+									<!-- <div class="product-widget">
+															<div class="product-img">
+																<img src="../img/portada libro.jpg" alt="">
+															</div>
+															<div class="product-body">
+																<h3 class="product-name"><a href="#">product name goes here</a></h3>
+																<h4 class="product-price"><span class="qty">1x</span>$980.00</h4>
+															</div>
+															<button class="delete"><i class="fa fa-close"></i></button>
+														</div> -->
+								  </div>
+								  <div class="cart-summary">
+									<small>{{cart.length}} Item(s) selected</small>
+									<h5>TOTAL: ${{total.toFixed(2)}}</h5>
+								  </div>
+								  <div class="cart-btns">
+									<a href="cart.html">View Cart</a>
+									<a href="checkout.html"
+									  >Checkout <i class="fa fa-arrow-circle-right"></i
+									></a>
+								  </div>
 								</div>
-							</div>
-							<!-- /Cart -->
-
+							  </div>
+							  <!-- /Cart -->
 							<!-- Menu Toogle -->
 							<div class="menu-toggle">
 								<a href="#">
@@ -328,20 +319,20 @@
 							</div>
 						
 							<!-- Campos para los detalles del libro -->
-							<div v-for="(book, index) in order.books" :key="index">
+							<div v-for="(book, index) in cart" :key="index">
 								<div>
-									<label for="book-id">Book ID:</label>
-									<input type="number" v-model="book.id" placeholder="Book ID" />
+									<strong>Book:</strong> {{ book.name }}
 								</div>
 								<div>
-									<label for="quantity">Quantity:</label>
-									<input type="number" v-model="book.quantity" placeholder="Quantity" />
+									<strong>Quantity:</strong> {{ book.quantity }}
 								</div>
 								<div>
-									<label for="price">Price:</label>
-									<input type="number" v-model="book.price" placeholder="Price" />
+									<strong>Price:</strong> {{ book.price }}
 								</div>
 							</div>
+							<div>Total: ${{ total.toFixed(2) }}</div>
+
+							
 						
 							<!-- Botón para agregar más libros -->
 							<button type="button" @click="addBook">Add another book</button>
@@ -495,10 +486,11 @@
 	<script src="../js/jquery.zoom.min.js"></script>
 	<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="https://js.stripe.com/v3/"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-	<script src="../js/main.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 	<script src="../js/stripe.js"></script>
 
+	</div>
 </body>
 
 </html>
