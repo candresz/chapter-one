@@ -1,0 +1,169 @@
+
+main{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    height: 50vh;
+}
+.container-form{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    box-shadow: 2px 3px 5px 7px rgba(0,0,0,.1);
+    max-width: 900px;
+    height: 500px;
+    transition: all is ease;
+    padding: 10px;
+    width: 100%;
+    margin: auto;
+    /* transform: translate(55%, -6%); */
+}
+.information{
+    width: 40%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    background-color:var(--color-green); /*color fondo welocome*/
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+.info-childs{
+    width: 100%;
+    padding: 0 30 px;
+}
+.info-childs h2{
+    font-size: 2.3rem;
+    color: #333;
+}
+.info-childs p{
+    margin: 15 px 0;
+    color: #555;
+}
+.info-childs input{
+    background-color: #D10024;
+    font-weight: 700;
+    outline: none;
+    border: solid 2px #9191bd;
+    border-radius: 20px;
+    padding: 10px 20px;
+    color:white;
+    cursor: pointer;
+    transition: background-color .3s ease;
+}
+.info-childs input:hover{
+    background-color: #9191bd;
+    border: none;
+    color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,.1) ;
+}
+.form-information{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60%;
+    text-align: center;
+    background-color:var(--color-nav-input);
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+.form-information-childs{
+    padding: 0 30px;
+}
+.form-information-childs h2{
+    color: #333;
+    font-size: 2rem;
+    margin-bottom: 4rem;
+}
+.form-information-childs p{
+    color: #555;
+}
+.icons{
+    margin: 15px 0;
+}
+.icons i {
+    border-radius: 50%;
+    padding: 15px;
+    cursor: pointer;
+    margin: 0 10px;
+    color:#9191bd ;
+    transition: background-color 0,3 ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,.1);
+    border: solid thin #9191bd;
+}
+.icons i:hover{
+    background-color: #c7c7f3;
+    color: #fff;
+}
+.form{
+    margin: 30px 0 0 0;   
+}
+.form label{
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 0 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,.1);
+}
+.form label input{
+    width: 100%;
+    padding: 10px;
+    background-color: #fff;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    color: #333;
+}
+.form label i{
+    color: #a7a7a7;
+}
+.form input[type="button"]{
+    background-color: #D10024;
+    font-weight: 700;
+    color: #fff;
+    border-radius: 20px;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin-top: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,.1);
+}
+.form input[type="submit"]:hover{
+    background-color: #7a7a9a;
+}
+.hide{
+   position: absolute;
+   transform: translateY(-300%);
+}
+/*////////REsponsive form */
+
+@media screen and (max-width:720px) {
+    html{
+        font-size: 12px;
+    }
+}
+@media screen and (max-width:580px) {
+    html{
+        font-size: 10px;
+    }
+    .container-form{
+        height: auto;
+        flex-direction: column;
+    }
+    .information{
+        width: 100%;
+        padding: 20px;
+        border-top-right-radius: 20px;
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+    .form-information{
+        width: 100%;
+        padding: 20px;
+        border-bottom-right-radius: 20px;
+        border-top-right-radius: 0px;
+    }
+}

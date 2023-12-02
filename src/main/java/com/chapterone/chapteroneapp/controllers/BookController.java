@@ -75,5 +75,10 @@ public class BookController {
         bookService.updateStock(id, newStock);
         return  new ResponseEntity<>("Stock updated", HttpStatus.OK);
     }
+    @GetMapping("/{id}")
+    public ResponseEntity<Object> getOrderTotalByNumber(@PathVariable Long id) {
+
+        return new ResponseEntity<>(bookService.findBookById(id), HttpStatus.OK);
+    }
 
 }
