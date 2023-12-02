@@ -9,7 +9,10 @@ createApp({
       checked:[],
       topSelling:[],
       inputValue:"",
-
+      order: {
+        address: "",
+        books: [],
+      },
       cart:[],
       total:0,
     }
@@ -22,8 +25,8 @@ createApp({
 
       //cart
 
-      this.cart = JSON.parse(localStorage.getItem("cart")) || []
-
+      this.cart = JSON.parse(localStorage.getItem("cart")) || [];
+      this.updateOrderBooks();
       JSON.stringify(this.cart)
 
       for (book of this.cart){
@@ -104,6 +107,17 @@ createApp({
     console.log(best)
     return best
   },
+  addToCartAndUpdateOrder(book) {
+    this.addcart(book); // Primero, agrega el libro al carrito
+    this.updateOrderBooks(); // Luego, actualiza order.books
+},
+updateOrderBooks() {
+  this.order.books = this.cart.map(item => ({
+      id: item.id,
+      quantity: item.quantity,
+      price: item.price
+  }));
+},
 
   addcart(bookA){
    let index = this.cart.findIndex(book => book.id == bookA.id)

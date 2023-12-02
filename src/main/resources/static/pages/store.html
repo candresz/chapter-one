@@ -446,10 +446,11 @@
                       </div>
                     </div>
                     <div v-if="book.stock > 0" class="add-to-cart">
-                      <button @click="addcart(book)" class="add-to-cart-btn">
-                        <i class="fa fa-shopping-cart"> </i> add to cart
+                      <button @click="addToCartAndUpdateOrder(book)" class="add-to-cart-btn">
+                          <i class="fa fa-shopping-cart"></i> add to cart
                       </button>
-                    </div>
+                  </div>
+                  
                   </div>
                 </div>
                 <!-- /product -->
