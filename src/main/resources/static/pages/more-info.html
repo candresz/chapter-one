@@ -40,7 +40,7 @@
     <![endif]-->
   </head>
   <body>
-    <div id="app">
+    
       <!-- HEADER -->
       <header>
         <!-- TOP HEADER -->
@@ -90,11 +90,9 @@
                   <form>
                     <input
                       class="input"
-                      v-model="inputValue"
-                      @keyup="mainFilter"
                       placeholder="Search here"
                     />
-                    <button class="search-btn" v-on:click="mainFilter">
+                    <button class="search-btn">
                       Search
                     </button>
                   </form>
@@ -243,18 +241,15 @@
 		<!-- /NAVIGATION -->
 
 		<!-- SECTION -->
-		<div class="section">
+		<div id="app" class="section">
 			<!-- container -->
 			<div class="container">
 				<!-- row -->
 				<div class="row">
-
-					
-
 					<!-- Order Details -->
-					<div class="col-md-12 order-details" v-if="client.orderTotal">
+					<div class="col-md-12 order-details">
 						<div class="section-title text-center">
-						  <h3 class="title">Your Order ({{ client.orderTotal.id }})</h3>
+						  <h3 class="title">Your Order ({{ client.id }})</h3>
 						</div>
 						<div class="order-summary">
 						  <div class="order-col">
@@ -262,8 +257,8 @@
 							<div><strong>TOTAL</strong></div>
 						  </div>
 						  <div class="order-products">
-							<div class="order-col" v-for="bookOrder in client.orderTotal.bookOrders" :key="bookOrder.id">
-							  <div>{{ bookOrder.quantity }}x {{ bookOrder.title || 'Book Title' }}</div>
+							<div class="order-col" v-for="bookOrder in client.bookOrders" :key="bookOrder.id">
+							  <div>{{ bookOrder.quantity }}x {{ bookOrder.nameBook }}</div>
 							  <div>${{ bookOrder.price.toFixed(2) }}</div>
 							</div>
 						  </div>
@@ -273,22 +268,18 @@
 						  </div>
 						  <div class="order-col">	
 							<div><strong>ADDRESS</strong></div>
-							<div>{{ client.orderTotal.address }}</div>
+							<div>{{ client.address }}</div>
 						  </div>
 						  <div class="order-col">
-							<div><strong>DATE OF PURCHASE</strong></div>
-							<div>{{ formatDate(client.orderTotal.localDateTime) }}</div>
-						  </div>
-						  <div class="order-col">
-							<div><strong>TIME OF PURCHASE</strong></div>
-							<div>{{ processTime(client.orderTotal.localDateTime) }}</div>
+							<div><strong>DATE AND HOUR OF PURCHASE</strong></div>
+							<div>{{(client.localDateTime) }}</div>
 						  </div>
 						  <div class="order-col">
 							<div><strong>TOTAL</strong></div>
-							<div><strong class="order-total">${{ client.orderTotal.totalAmount.toFixed(2) }}</strong></div>
+							<div><strong class="order-total">${{ client.totalAmount.toFixed(2) }}</strong></div>
 						  </div>
 						</div>
-					  </div>
+					</div>
 					  
 					<!-- /Order Details -->
 				</div>
@@ -422,6 +413,9 @@
 		<script src="js/nouislider.min.js"></script>
 		<script src="js/jquery.zoom.min.js"></script>
 		<script src="js/main.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+		<script src="../js/more-info.js" ></script>
 
 	</body>
 </html>

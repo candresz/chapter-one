@@ -5,5 +5,5 @@ import com.chapterone.chapteroneapp.models.OrderDetail;
 
 public interface OrderDetailService {
     void saveOrderDetail(OrderDetail orderDetail);
-    OrderDetail findByIdAndClient(Long id, Client client);
+    OrderDetail findById(Long id);
 }

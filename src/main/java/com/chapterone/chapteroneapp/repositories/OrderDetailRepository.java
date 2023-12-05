@@ -8,7 +8,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 @RepositoryRestResource
 public interface OrderDetailRepository extends JpaRepository<OrderDetail, Long> {
-    OrderDetail findByIdAndClient(Long id, Client client);
+
 
 
 }
