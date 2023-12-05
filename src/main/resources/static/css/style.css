@@ -69,7 +69,7 @@ h1, h2, h3, h4, h5, h6 {
 
 a {
   color: #2B2D42;
-  font-weight: 500;
+  font-weight: 700;
   -webkit-transition: 0.2s color;
   transition: 0.2s color;
 }
@@ -146,6 +146,11 @@ textarea.input {
   border: 1px solid #E4E7ED;
   background-color: #FFF;
   padding: 0px 35px 0px 15px;
+}
+
+.qty__func{
+  cursor: pointer;
+  font-size: 1.8rem;
 }
 
 .input-number .qty-up, .input-number .qty-down {
@@ -402,6 +407,7 @@ textarea.input {
   color: #D10024;
 }
 
+
 /*=========================================================
 	02 -> HEADER
 ===========================================================*/
@@ -553,6 +559,12 @@ textarea.input {
   opacity: 0;
   visibility: hidden;
 }
+
+.qty__func{
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
 
 .dropdown.open>.cart-dropdown {
   opacity: 1;
@@ -1810,6 +1822,19 @@ textarea.input {
 	09 -> CHECKOUT PAGE
 ===========================================================*/
 
+.btn__danger{
+  background-color: #D10024;
+  font-weight: 700 ;
+  color: #E4E7ED;
+}
+
+.btn__danger:hover{
+  background-color: #bd0221 ;
+  font-weight: 700;
+  color: #E4E7ED;
+}
+
+
 .billing-details {
   margin-bottom: 30px;
 }
@@ -2021,7 +2046,7 @@ textarea.input {
 }
 
 .footer-payments li a {
-  color: #15161D;
+  color: white;
   font-size: 36px;
   display: block;
 }
@@ -2144,11 +2169,12 @@ textarea.input {
   }
 }
 
+
 @media only screen and (max-width: 480px) {
   [class*='col-xs'] {
     width: 100%;
   }
-  .store-grid {
+  .store-grid{
     float: none;
     margin-top: 10px;
   }
@@ -2156,4 +2182,107 @@ textarea.input {
     float: none;
     margin-top: 10px;
   }
+}
+
+
+/* Estilos generales de la tabla */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Estilos para las celdas de encabezado */
+th {
+ 
+  font-weight: normal;
+}
+
+/* Estilos para las celdas de datos */
+td {
+  padding: 8px;
+  
+}
+
+/* Estilos para hacerla responsive */
+@media (max-width: 320px) {
+  table {
+    font-size: 14px;
+  }
+  tr {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 10px;
+  }
+  th, td {
+    width: 100%;
+    margin-top: 2rem;
+  }
+  th {
+    font-weight: bold;
+  }
+}
+@media (max-width: 768px) {
+  
+
+  .table thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  .table tr { border: 1px solid #ccc; }
+
+  .table td {
+    /* Convertir las celdas en bloques para que se apilen en lugar de estar en línea */
+    display: block;
+    text-align: right;
+  }
+
+  .table td::before {
+    /* Agregar los nombres de las columnas antes de cada celda */
+    content: attr(data-th);
+    float: left;
+    font-weight: bold;
+  }
+
+  .table td:last-child {
+    border-bottom: 0;
+  }
+
+  /* Estilos para la imagen y el botón */
+  .table img {
+    width: 100%; /* Hace que la imagen sea responsive */
+    height: auto;
+    margin-bottom: 10px; /* Espacio debajo de la imagen */
+  }
+
+  .table button {
+    width: 100%; /* Hace que el botón ocupe todo el ancho de la celda */
+    box-sizing: border-box; /* Asegura que el padding y border estén incluidos en el ancho */
+  }
+  .table td img {
+    display: block; /* Hace que la imagen sea un bloque para centrarla */
+    margin: 0 auto 10px; /* Centra la imagen y añade espacio abajo */
+  }
+
+  .table td input[type="number"] {
+    float: right; /* Alinea a la derecha el input */
+    margin-bottom: 2rem;
+  }
+
+  /* Ajustes para los labels de cada dato */
+  .table td::before {
+    /* ... tus otros estilos ... */
+    clear: both; /* Asegura que el label no se mezcle con otros elementos flotantes */
+    display: block; /* Asegura que el label ocupe su propia línea */
+  }
+
+  /* Asegúrate de limpiar los flotantes después de cada fila */
+  .table tr:after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+  
 }

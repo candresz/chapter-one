@@ -5,20 +5,27 @@ main{
     justify-content: center;
     height: 50vh;
 }
-.container-form{
-    display:flex;
+.parent-container {
+    display: flex;
+    justify-content: center; /* Alinea horizontalmente y centrado */
+    gap: 20px; /* Espacio opcional entre los elementos */
+}
+
+.container-form {
+    display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 20px;
     box-shadow: 2px 3px 5px 7px rgba(0,0,0,.1);
-    max-width: 900px;
-    height: 500px;
-    transition: all is ease;
-    padding: 10px;
-    width: 100%;
-    margin: auto;
-    /* transform: translate(55%, -6%); */
+    max-width: 300px;
+    height: 200px;
+    transition: all ease;
+    padding: 30px;
+    margin-bottom: 5rem;
+    /* width: 100%; Elimina o ajusta esto ya que puede interferir con el flex */
+    /* margin-left: 5rem; Elimina esto para evitar desplazamientos innecesarios */
 }
+
 .information{
     width: 40%;
     display: flex;
@@ -31,6 +38,7 @@ main{
 .info-childs{
     width: 100%;
     padding: 0 30 px;
+    justify-content: center;
 }
 .info-childs h2{
     font-size: 2.3rem;
@@ -41,8 +49,7 @@ main{
     color: #555;
 }
 .info-childs input{
-    background-color: #D10024;
-    font-weight: 700;
+    background-color: red;
     outline: none;
     border: solid 2px #9191bd;
     border-radius: 20px;
@@ -73,7 +80,7 @@ main{
 .form-information-childs h2{
     color: #333;
     font-size: 2rem;
-    margin-bottom: 4rem;
+    margin-bottom: 5rem;
 }
 .form-information-childs p{
     color: #555;
@@ -119,15 +126,14 @@ main{
 .form label i{
     color: #a7a7a7;
 }
-.form input[type="button"]{
-    background-color: #D10024;
-    font-weight: 700;
+.form input[type="submit"]{
+    background-color: red;
     color: #fff;
     border-radius: 20px;
     border: none;
     padding: 10px 15px;
     cursor: pointer;
-    margin-top: 10px;
+    margin-bottom: 4rem;
     box-shadow: 0 2px 5px rgba(0,0,0,.1);
 }
 .form input[type="submit"]:hover{
@@ -167,19 +173,23 @@ main{
         border-top-right-radius: 0px;
     }
 }
-.icons {
+.parent-container {
     display: flex;
-    justify-content: space-between; /* Para espaciar los iconos uniformemente */
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
-.icons i {
-    font-size: 2rem; /* Tamaño de los iconos, puedes ajustarlo según tus preferencias */
+.container-form {
+    width: 48%; /* Establece el ancho de cada contenedor para que haya dos en una fila */
+    margin-bottom: 20px;
 }
 
-@media (max-width: 320px) {
-    .icons {
-        flex-direction: row; /* Cambia la dirección a horizontal para que los iconos estén uno al lado del otro */
-        justify-content: flex-start; /* Alinea los iconos al inicio */
-        margin-top: 10px; /* Añade un margen superior para separarlos un poco */
+/* Media query para pantallas más pequeñas */
+@media (max-width: 768px) {
+    .container-form {
+        width: 100%; /* Cuando el ancho de la pantalla sea menor de 768px, cambia el ancho a 100% para que estén uno debajo del otro */
     }
 }
+.center__cont{display: flex;
+    flex-direction: column;
+    align-items: center;}
