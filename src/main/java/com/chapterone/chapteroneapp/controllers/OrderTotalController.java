@@ -1,6 +1,7 @@
 package com.chapterone.chapteroneapp.controllers;
 
 
+import com.chapterone.chapteroneapp.dto.OrderTotalDTO;
 import com.chapterone.chapteroneapp.models.Client;
 import com.chapterone.chapteroneapp.services.ClientService;
 import com.chapterone.chapteroneapp.services.OrderTotalService;
@@ -27,7 +28,7 @@ public class OrderTotalController {
         if(!orderTotalService.existsByIdAndClient(id, client)){
          return   new ResponseEntity<>("This order was not made by this client", HttpStatus.FORBIDDEN);
         }
-        return new ResponseEntity<>(orderTotalService.findByIdAndClient(id, client), HttpStatus.OK);
+        return new ResponseEntity<>(new OrderTotalDTO(orderTotalService.findByIdAndClient(id, client)), HttpStatus.OK);
     }
 
 

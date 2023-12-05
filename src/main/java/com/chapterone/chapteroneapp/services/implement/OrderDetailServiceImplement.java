@@ -17,7 +17,7 @@ public class OrderDetailServiceImplement implements OrderDetailService {
     }
 
     @Override
-    public OrderDetail findByIdAndClient(Long id, Client client) {
-        return orderDetailRepository.findByIdAndClient(id, client);
+    public OrderDetail findById(Long id) {
+        return orderDetailRepository.findById(id).orElse(null);
     }
 }
