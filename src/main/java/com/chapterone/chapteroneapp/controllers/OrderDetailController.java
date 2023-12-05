@@ -122,4 +122,14 @@ public class OrderDetailController {
         }
     }
 
+    @GetMapping("/orderDetail/{id}")
+    public ResponseEntity<Object> getOrderDetailByNumber(@PathVariable Long id, Authentication authentication) {
+        Client client = clientService.findClientByEmail(authentication.getName());
+        OrderDetail orderDetail = orderDetailService.findByIdAndClient(id, client);
+        if(orderDetail == null){
+            return   new ResponseEntity<>("This order does not exists", HttpStatus.FORBIDDEN);
+        }
+        return new ResponseEntity<>(orderDetailService.findByIdAndClient(id, client), HttpStatus.OK);
+    }
+
 }

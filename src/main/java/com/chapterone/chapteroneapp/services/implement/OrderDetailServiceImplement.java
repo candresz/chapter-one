@@ -1,5 +1,6 @@
 package com.chapterone.chapteroneapp.services.implement;
 
+import com.chapterone.chapteroneapp.models.Client;
 import com.chapterone.chapteroneapp.models.OrderDetail;
 import com.chapterone.chapteroneapp.repositories.OrderDetailRepository;
 import com.chapterone.chapteroneapp.services.OrderDetailService;
@@ -13,5 +14,10 @@ public class OrderDetailServiceImplement implements OrderDetailService {
     @Override
     public void saveOrderDetail(OrderDetail orderDetail) {
         orderDetailRepository.save(orderDetail);
+    }
+
+    @Override
+    public OrderDetail findByIdAndClient(Long id, Client client) {
+        return orderDetailRepository.findByIdAndClient(id, client);
     }
 }
