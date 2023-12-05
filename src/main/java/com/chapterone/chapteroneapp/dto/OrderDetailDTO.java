@@ -1,11 +1,13 @@
 package com.chapterone.chapteroneapp.dto;
 
+import com.chapterone.chapteroneapp.models.Book;
 import com.chapterone.chapteroneapp.models.OrderDetail;
 
 public class OrderDetailDTO {
     private Long id;
     private int quantity;
     private double price;
+    private Book bookId;
 
     public OrderDetailDTO() {
     }
@@ -14,6 +16,7 @@ public class OrderDetailDTO {
         this.id = orderDetail.getId();
         this.quantity = orderDetail.getQuantity();
         this.price = orderDetail.getPrice();
+        this.bookId = orderDetail.getBook();
     }
 
     public Long getId() {
@@ -28,4 +31,7 @@ public class OrderDetailDTO {
         return price;
     }
 
+    public Book getBookId() {
+        return bookId;
+    }
 }

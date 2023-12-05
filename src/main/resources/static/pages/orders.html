@@ -207,39 +207,36 @@
 					<div class="row">
 					  <!-- Columna de productos -->
 					  <div class="col-md-8">
-						<table class="table">
-						  <!-- Encabezados de la tabla -->
-						  <thead>
-							<tr>
-								<th>Order Id</th>
-							  <th>Checkout Date</th>
-							  <th>Subtotal</th>
-                              <th>Processing time</th>
-                              <th>Method of payment</th>
-                              <th>Items</th>
-							</tr>
-						  </thead>
-						  <tbody>
-							<!-- Productos -->
-							<tr>
-							  <td>141</td>
-							  <td>05/12/2023</td>
-							  <td>$17.98.-</td>
-                              <td>10:29:35 AM</td>
-                              <td>Stripe</td>
-                              <td>2 items</td>
-                              <td>
-                                <a href="./more-info.html">
-                                    <button class="btn btn-danger" style="background-color:#D10024;"><strong>More info</strong></button>
-                                </a>
-                            </td>
-                            
-							  
-							</tr>
-							<!-- 2do producto -->
-                            
-						  </thead>
-						</table>
+						<div id="app">
+							<table class="table">
+							  <thead>
+								<tr>
+								  <th>Order Id</th>
+								  <th>Checkout Date</th>
+								  <th>Subtotal</th>
+								  <th>Method of payment</th>
+								  <th>Items</th>
+								  <th>More Info</th>
+								</tr>
+							  </thead>
+							  <tbody>
+								<tr v-for="order in client.orderTotal" :key="order.id">
+								  <td data-th="Order Id" >{{ order.id }}</td>
+								  <td data-th="Checkout Date" >{{order.localDateTime }}</td>
+								  <td data-th="Subtotal" >${{ order.totalAmount.toFixed(2) }}</td>
+								  <td data-th="Method of payment" > Stripe</td>
+								  <td data-th="More Info" >{{ order.bookOrders.length }} items</td>
+								  <td>
+									<a :href="'./more-info.html?orderId=' + order.id">
+									  <button class="btn btn-danger" style="background-color:#D10024;"><strong>More info</strong></button>
+									</a>
+								  </td>
+								</tr>
+							  </tbody>
+							</table>
+						  </div>
+						  
+						  
 						  
 					  </div>
 					  
@@ -393,6 +390,10 @@
 		<script src="../js/nouislider.min.js"></script>
 		<script src="../js/jquery.zoom.min.js"></script>
 		<script src="../js/main.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+		<script src="../js/order.js" ></script>
 
 	</body>
 </html>
