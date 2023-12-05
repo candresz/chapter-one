@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-    <title>Product | Chapter-One</title>
+    <title>Product | Chaprter-One</title>
 
     <!-- Google font -->
     <link
@@ -30,6 +30,8 @@
     <!-- Custom stlylesheet -->
     <link type="text/css" rel="stylesheet" href="../css/style.css" />
 
+    <link rel="shortcut icon" href="../img/icon.png" type="image/x-icon">
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -45,17 +47,9 @@
         <div id="top-header">
           <div class="container">
             <ul class="header-links pull-left">
-              <li>
-                <a href="#"><i class="fa fa-phone"></i> +021-95-51-84</a>
-              </li>
-              <li>
-                <a href="#"><i class="fa fa-envelope-o"></i> email@email.com</a>
-              </li>
-              <li>
-                <a href="#"
-                  ><i class="fa fa-map-marker"></i> 1734 Stonecoal Road</a
-                >
-              </li>
+              <li><a href="#"><i class="fa fa-phone"></i> +541143727845</a></li>
+						<li><a href="#"><i class="fa fa-envelope-o"></i> info@chapterone.com</a></li>
+						<li><a href="#"><i class="fa fa-map-marker"></i> Av. Corrientes 1436, C1042AAN CABA, Argentina</a></li>
             </ul>
             <ul class="header-links pull-right">
               <li>
@@ -83,8 +77,8 @@
               <!-- LOGO -->
               <div class="col-md-3">
                 <div class="header-logo">
-                  <a href="#" class="logo">
-                    <img src="./img/logo.png" alt="" />
+                  <a href="../index.html" class="logo">
+                    <img src="../img/Chapter-One..png" alt="" />
                   </a>
                 </div>
               </div>
@@ -104,15 +98,7 @@
               <!-- ACCOUNT -->
               <div class="col-md-3 clearfix">
                 <div class="header-ctn">
-                  <!-- Wishlist -->
-                  <div>
-                    <a href="#">
-                      <i class="fa fa-heart-o"></i>
-                      <span>Your Wishlist</span>
-                      <div class="qty">2</div>
-                    </a>
-                  </div>
-                  <!-- /Wishlist -->
+                
 
                   <!-- Cart -->
                   <div class="dropdown">
@@ -123,7 +109,7 @@
                     >
                       <i class="fa fa-shopping-cart"></i>
                       <span>Your Cart</span>
-                      <div class="qty">3</div>
+                      <div class="qty">2</div>
                     </a>
                     <div class="cart-dropdown">
                       <div class="cart-list">
@@ -236,10 +222,10 @@
             <!-- NAV -->
             <ul class="main-nav nav navbar-nav">
               <li class="active"><a href="../index.html">Home</a></li>
-              <li><a href="best-sellers.html">Best sellers</a></li>
-              <li><a href="store.html">All books</a></li>
-              <li><a href="categories.html">Categories</a></li>
-              <li><a href="authors.html">Authors</a></li>
+              <li><a href="../pages/best-sellers.html">Best sellers</a></li>
+              <li><a href="../pages/top-childrens.html">Top Children´s</a></li>
+              <li><a href="../pages/new-collection.html">New Collection</a></li>
+              <li><a href="../pages/store.html">All books</a></li>
             </ul>
             <!-- /NAV -->
           </div>
@@ -292,7 +278,7 @@
                 <h2 class="product-name">{{book.name}}</h2>
                 <div>
                   <h3 class="product-price">
-                    ${{book.price}}<del class="product-old-price">"DESCUENTO SI QUIEREN"</del>
+                    ${{book.price}}<del class="product-old-price"></del>
                   </h3>
 				  <span class="product-available" v-if="book.stock >= 1"> In Stock</span>
 				  <span class="product-available" v-else> Out of stock</span>
@@ -301,30 +287,22 @@
                  {{book.description}}
                 </p>
 
-                <div class="add-to-cart">
+                <div class="add-to-cart" style="opacity: 0;">
                   <div class="qty-label">
                     Qty
                     <div class="input-number">
-                      <input type="number" />
-                      <span class="qty-up">+</span>
-                      <span class="qty-down">-</span>
+                      <input type="number"  style="cursor:default;"/>
+                      <span class="qty-up" style="cursor:default;">+</span>
+                      <span class="qty-down" style="cursor:default;">-</span>
                     </div>
                   </div>
-                  <button class="add-to-cart-btn">
-                    <i class="fa fa-shopping-cart"></i> add to cart
-                  </button>
+
                 </div>
 
-                <ul class="product-btns">
-                  <li>
-                    <a href="#"
-                      ><i class="fa fa-heart-o"></i> add to wishlist</a
-                    >
-                  </li>
-                </ul>
+               
 
                 <ul class="product-links">
-                  <li>Author: {{book.author}}</li>
+                  <li><strong>Author: {{book.author}}</strong></li>
 				 
                 </ul>
 				<ul class="product-links">
@@ -483,8 +461,8 @@
                           <ul class="reviews">
                             <li>
                               <div class="review-heading">
-                                <h5 class="name">John</h5>
-                                <p class="date">27 DEC 2018, 8:0 PM</p>
+                                <h5 class="name">John Wick</h5>
+                                <p class="date">27 DEC 2018, 14:00 PM</p>
                                 <div class="review-rating">
                                   <i class="fa fa-star"></i>
                                   <i class="fa fa-star"></i>
@@ -495,16 +473,14 @@
                               </div>
                               <div class="review-body">
                                 <p>
-                                  Lorem ipsum dolor sit amet, consectetur
-                                  adipisicing elit, sed do eiusmod tempor
-                                  incididunt ut labore et dolore magna aliqua
+                                  "An enjoyable read with well-developed characters and a unique blend of humor and depth. Although a bit slow at times, the narrative is thought-provoking and stays with you. Four stars for its originality."
                                 </p>
                               </div>
                             </li>
                             <li>
                               <div class="review-heading">
-                                <h5 class="name">John</h5>
-                                <p class="date">27 DEC 2018, 8:0 PM</p>
+                                <h5 class="name">Melba Morel</h5>
+                                <p class="date">12 DEC 2023, 20:00 PM</p>
                                 <div class="review-rating">
                                   <i class="fa fa-star"></i>
                                   <i class="fa fa-star"></i>
@@ -515,16 +491,14 @@
                               </div>
                               <div class="review-body">
                                 <p>
-                                  Lorem ipsum dolor sit amet, consectetur
-                                  adipisicing elit, sed do eiusmod tempor
-                                  incididunt ut labore et dolore magna aliqua
+                                  "Masterful storytelling with vivid descriptions. Some parts were predictable, but the strong character development compensates. A bit rushed towards the end, but overall, a satisfying four-star read."
                                 </p>
                               </div>
                             </li>
                             <li>
                               <div class="review-heading">
-                                <h5 class="name">John</h5>
-                                <p class="date">27 DEC 2018, 8:0 PM</p>
+                                <h5 class="name">Harry Potter</h5>
+                                <p class="date">09 OCT 2021, 17:00 PM</p>
                                 <div class="review-rating">
                                   <i class="fa fa-star"></i>
                                   <i class="fa fa-star"></i>
@@ -535,9 +509,7 @@
                               </div>
                               <div class="review-body">
                                 <p>
-                                  Lorem ipsum dolor sit amet, consectetur
-                                  adipisicing elit, sed do eiusmod tempor
-                                  incididunt ut labore et dolore magna aliqua
+                                  "Offers a wealth of information with clear, insightful writing. It's dense, but the real-world examples are helpful. A bit dry, but a solid four-star book for expanding knowledge on the topic."
                                 </p>
                               </div>
                             </li>
@@ -670,115 +642,88 @@
       </div>
       <!-- /NEWSLETTER -->
 
-      <!-- FOOTER -->
-      <footer id="footer">
-        <!-- top footer -->
-        <div class="section">
-          <!-- container -->
-          <div class="container">
-            <!-- row -->
-            <div class="row">
-              <div class="col-md-4 col-xs-6">
-                <div class="footer">
-                  <h3 class="footer-title">About Us</h3>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                    sed do eiusmod tempor incididunt ut.
-                  </p>
-                  <ul class="footer-links">
-                    <li>
-                      <a href="#"
-                        ><i class="fa fa-map-marker"></i>1734 Stonecoal Road</a
-                      >
-                    </li>
-                    <li>
-                      <a href="#"><i class="fa fa-phone"></i>+021-95-51-84</a>
-                    </li>
-                    <li>
-                      <a href="#"
-                        ><i class="fa fa-envelope-o"></i>email@email.com</a
-                      >
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div class="clearfix visible-xs"></div>
+      
+      	<!-- FOOTER -->
+		<footer id="footer">
+			<!-- top footer -->
+			<div class="section">
+				<!-- container -->
+				<div class="container">
+					<!-- row -->
+					<div class="row">
+						<div class="col-md-4 col-xs-6">
+							<div class="footer">
+								<h3 class="footer-title">About Us</h3>
+								<p>Established in 2001, our bookstore offers a wide variety of books and a cozy space for community engagement, including author events and book clubs, in the heart of the city.</p>
+								<ul class="footer-links">
+									<li><a href="#"><i class="fa fa-phone"></i> +541143727845</a></li>
+						<li><a href="#"><i class="fa fa-envelope-o"></i> info@chapterone.com</a></li>
+						<li><a href="#"><i class="fa fa-map-marker"></i> Av. Corrientes 1436, C1042AAN CABA, Argentina</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="clearfix visible-xs"></div>
 
-              <div class="col-md-4 col-xs-6">
-                <div class="footer">
-                  <h3 class="footer-title">Information</h3>
-                  <ul class="footer-links">
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Contact Us</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Orders and Returns</a></li>
-                    <li><a href="#">Terms & Conditions</a></li>
-                  </ul>
-                </div>
-              </div>
+						<div class="col-md-4 col-xs-6">
+							<div class="footer">
+								<h3 class="footer-title">Information</h3>
+								<ul class="footer-links">
+									<li><a href="#">About Us</a></li>
+									<li><a href="#">Contact Us</a></li>
+									<li><a href="#">Privacy Policy</a></li>
+									<li><a href="#">Orders and Returns</a></li>
+									<li><a href="#">Terms & Conditions</a></li>
+								</ul>
+							</div>
+						</div>
 
-              <div class="col-md-4 col-xs-6">
-                <div class="footer">
-                  <h3 class="footer-title">Service</h3>
-                  <ul class="footer-links">
-                    <li><a href="#">My Account</a></li>
-                    <li><a href="#">View Cart</a></li>
-                    <li><a href="#">Wishlist</a></li>
-                    <li><a href="#">Track My Order</a></li>
-                    <li><a href="#">Help</a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <!-- /row -->
-          </div>
-          <!-- /container -->
-        </div>
-        <!-- /top footer -->
+						<div class="col-md-4 col-xs-6">
+							<div class="footer">
+								<h3 class="footer-title">Service</h3>
+								<ul class="footer-links">
+									<li><a href="#">My Account</a></li>
+									<li><a href="#">View Cart</a></li>
+								
+									<li><a href="#">Track My Order</a></li>
+									<li><a href="#">Help</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- /row -->
+				</div>
+				<!-- /container -->
+			</div>
+			<!-- /top footer -->
 
-        <!-- bottom footer -->
-        <div id="bottom-footer" class="section">
-          <div class="container">
-            <!-- row -->
-            <div class="row">
-              <div class="col-md-12 text-center">
-                <ul class="footer-payments">
-                  <li>
-                    <a href="#"><i class="fa fa-cc-visa"></i></a>
-                  </li>
-                  <li>
-                    <a href="#"><i class="fa fa-credit-card"></i></a>
-                  </li>
-                  <li>
-                    <a href="#"><i class="fa fa-cc-paypal"></i></a>
-                  </li>
-                  <li>
-                    <a href="#"><i class="fa fa-cc-mastercard"></i></a>
-                  </li>
-                  <li>
-                    <a href="#"><i class="fa fa-cc-discover"></i></a>
-                  </li>
-                  <li>
-                    <a href="#"><i class="fa fa-cc-amex"></i></a>
-                  </li>
-                </ul>
-                <span class="copyright">
-                  Copyright &copy;
-                  <script>
-                    document.write(new Date().getFullYear());
-                  </script>
-                  All rights reserved | This template is made with
-                  <i class="fa fa-heart-o"></i> by <a href="">Group 3 C.H.51</a>
-                </span>
-              </div>
-            </div>
-            <!-- /row -->
-          </div>
-          <!-- /container -->
-        </div>
-        <!-- /bottom footer -->
-      </footer>
-      <!-- /FOOTER -->
+			<!-- bottom footer -->
+			<div id="bottom-footer" class="section">
+				<div class="container">
+					<!-- row -->
+					<div class="row">
+						<div class="col-md-12 text-center">
+							<ul class="footer-payments">
+								<li><a href="#"><i class="fa fa-cc-visa"></i></a></li>
+								<li><a href="#"><i class="fa fa-credit-card"></i></a></li>
+								<li><a href="#"><i class="fa fa-cc-paypal"></i></a></li>
+								<li><a href="#"><i class="fa fa-cc-mastercard"></i></a></li>
+								<li><a href="#"><i class="fa fa-cc-discover"></i></a></li>
+								<li><a href="#"><i class="fa fa-cc-amex"></i></a></li>
+							</ul>
+							<span class="copyright">
+								
+								Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o"></i> by <a href="" >Group 3 C.H.51</a>
+						
+							</span>
+						</div>
+					</div>
+						<!-- /row -->
+				</div>
+				<!-- /container -->
+			</div>
+			<!-- /bottom footer -->
+		</footer>
+		<!-- /FOOTER -->
 
       <!-- jQuery Plugins -->
       <script src="../js/jquery.min.js"></script>

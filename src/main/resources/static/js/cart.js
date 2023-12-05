@@ -5,83 +5,57 @@ createApp({
     return {
       books:[],      
       categories:[],
-      filter:[],
+    
       checked:[],
       topSelling:[],
       inputValue:"",
-        order: {
-          address: "",
-          books: [],
-        },
+        // order: {
+        //   address: "",
+        //   books: [],
+        // },
       cart:[],
       total:0,
     }
   },
 
   created(){
+ 
+  
+
     axios.get("/api/books")
     .then(response => {
       console.log(response)
 
       //cart
-
       this.cart = JSON.parse(localStorage.getItem("cart")) || [];
-      this.updateOrderBooks();
       JSON.stringify(this.cart)
+
 
       for (book of this.cart){
         this.total += book.price * book.quantity
 
       }
 
-
      for (book of this.cart){
       let aux = response.data.find(itemCart => itemCart.id == book.id)
       aux.stock -= book.quantity
 
+
       
      }
-
-
-
-
       //endcart
 
       this.books = response.data;
 
-      this.filter = this.books
-      console.log(this.filter)
-
-      let todasCat = this.books.map(book => book.categories)
-
-      this.categories = this.OnlyElement(todasCat)
-      console.log(this.categories)
-
-
-      this.topSelling = this.best3()
-
       }
-
-
-
-    )
+   )
     .catch(error => console.log(error))
-
-
-
-
 
   },
 
   methods:{
-    OnlyElement(lista){
-      return Array.from(new Set (lista))
-  },
-
-  searchFilter(books,inputSearchvalue){
-    return books.filter( book => book.name.toLowerCase().includes(inputSearchvalue.toLowerCase()))
   
-},
+
   checkFilter(books,categories){
     if(categories.length == 0){
       return books
@@ -97,29 +71,19 @@ createApp({
     this.filter = checkboxFilter;
   },
 
-
-  best3(){
-    const array = Array.from(this.books)
-    array.sort((a,b) => b.totalSales - a.totalSales)
-
-    console.log(array)
-    const best = [array[0],array[1], array[2]]
-    console.log(best)
-    return best
-  },
   addToCartAndUpdateOrder(book) {
     this.addcart(book); // Primero, agrega el libro al carrito
     this.updateOrderBooks(); // Luego, actualiza order.books
 },
 
-updateOrderBooks() {
-  this.order.books = this.cart.map(item => ({
-      id: item.id,
-      quantity: item.quantity,
-      price: item.price
-  }));
+// updateOrderBooks() {
+//   this.order.books = this.cart.map(item => ({
+//       id: item.id,
+//       quantity: item.quantity,
+//       price: item.price
+//   }));
 
-},
+// },
 
   addCart(bookA){
    let index = this.cart.findIndex(book => book.id == bookA.id)

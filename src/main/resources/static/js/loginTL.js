@@ -50,7 +50,7 @@ createApp({
     const data = `firstName=${this.name}&lastName=${this.lastName}&email=${this.email}&password=${this.password}`
    axios.post("/api/clients" , data)
    .then(response => {
-    alert("register")
+   
   
 
       axios.post("/api/login", `email=${this.email}&password=${this.password}`)
@@ -58,7 +58,6 @@ createApp({
         console.log("sign in!")
         
         Swal.fire({
-          position: "top-end",
           icon: "success",
           title: "Your work has been saved",
           showConfirmButton: false,
@@ -67,7 +66,7 @@ createApp({
 
         setTimeout(() => {
           
-          location.href ="./store.html"
+          location.href ="./user.html"
 
         }, 1400);
 
@@ -98,16 +97,15 @@ createApp({
         console.log("sign in!")
         
         Swal.fire({
-          position: "top-end",
           icon: "success",
-          title: "Your work has been saved",
+          title: "Login Successfully",
           showConfirmButton: false,
           timer: 1300 
         });
 
         setTimeout(() => {
           
-          location.href ="./store.html"
+          location.href ="./user.html"
 
         }, 1400);
 

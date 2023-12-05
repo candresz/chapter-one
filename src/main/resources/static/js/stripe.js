@@ -38,7 +38,7 @@ createApp({
       JSON.stringify(this.cart)
 
       for (book of this.cart){
-        this.total += book.price
+        this.total += book.price * book.quantity
 
       }
 
@@ -193,6 +193,93 @@ createApp({
   
        this.total -= bookD.quantity * bookD.price
   
-    }
+    },
+    // async submitPayment() {
+    //   const { token, error } = await this.stripe.createToken(this.cardNumber);
+
+    //   if (error) {
+    //     console.error(error);
+    //   } else {
+    //     axios
+    //       .post("/api/orderDetail", {
+    //         address: this.order.address,
+    //         books: this.order.books,
+    //         stripeToken: token.id,
+    //       })
+    //       .then((response) => {
+    //         console.log(response.data);
+    //       })
+    //       .catch((error) => {
+    //         console.error(error);
+    //       });
+    //   }
+    // },
+    async submitPayment() {
+      const { token, error } = await this.stripe.createToken(this.cardNumber);
+
+      Swal.fire({
+        title: '<span style="color: #ffffff;">Are you sure you want to make the payment?</span>',
+        icon: "warning",
+        iconColor: "#ffffff",
+        showCancelButton: true,
+        background: "#15161d",
+        confirmButtonColor: "#008000",
+        cancelButtonColor: "#d10024",
+        confirmButtonText: "Yes, make payment",
+        cancelButtonText: "Cancel",
+        allowHtml: true
+      }).then((result) => {
+        if (result.isConfirmed) {
+          axios
+          .post("/api/orderDetail", {
+            address: this.order.address,
+            books: this.order.books,
+            stripeToken: token.id,
+          })
+            .then(() => {
+
+          const total = this.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+
+          // Crear el HTML de la factura
+          let cartItemsHtml = '<table style="width: 100%; border-collapse: collapse; font-size: 16px;">';
+          cartItemsHtml += '<tr><th style="text-align: left; border-bottom: 1px solid #ffffff; padding: 8px; color: #ffffff;">Item</th><th style="text-align: right; border-bottom: 1px solid #ffffff; padding: 8px; color: #ffffff;">Quantity</th><th style="text-align: right; border-bottom: 1px solid #ffffff; padding: 8px; color: #ffffff">Price</th></tr>';
+          
+          this.cart.forEach(item => {
+            cartItemsHtml += `<tr><td style="padding: 8px; border-bottom: 1px solid #ffffff; color: #ffffff;">${item.name}</td><td style="text-align: right; padding: 8px; border-bottom: 1px solid #ffffff; color: #ffffff; ">${item.quantity}</td><td style="text-align: right; padding: 8px; border-bottom: 1px solid #ffffff; color:#ffffff">$${item.price.toFixed(2)}</td></tr>`;
+          });
+
+          cartItemsHtml += `<tr><td colspan="2" style="text-align: right; padding: 8px; font-weight: bold; color: #ffffff;">Total:</td><td style="text-align: right; padding: 8px; font-weight: bold; color: #ffffff;">$${total.toFixed(2)}</td></tr>`;
+          cartItemsHtml += '</table>';
+
+    
+              Swal.fire({
+                icon: "success",
+                title: '<span style="color: #ffffff;">Payment successfully</span>',
+                background: "#15161d",
+                iconColor: "#008000",
+                html: cartItemsHtml,
+                confirmButtonColor: "#008000",
+              }), setTimeout(()=>{location.pathname="/pages/user.html"}, 1800)
+
+            })
+            .catch((error) => {
+              console.log(error);
+              this.errorMessage(error.response.data);
+            });
+        }
+      });
+    },
+    errorMessage(message) {
+      Swal.fire({
+        icon: "error",
+        iconColor: "#D10024",
+        title: "An error has occurred",
+        text: message,
+        color: "#ffffff",
+        background: "#15161d",
+        confirmButtonColor: "#17acc9",
+      });
+    },
   },
 }).mount("#app");

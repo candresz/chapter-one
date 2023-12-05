@@ -113,6 +113,7 @@ public class OrderDetailController {
 
             if (chargeResponse.getStatus().equals("succeeded")) {
                 return new ResponseEntity<>("Order processed and payment successful", HttpStatus.CREATED);
+
             } else {
                 return new ResponseEntity<>("Payment failed", HttpStatus.BAD_REQUEST);
             }
